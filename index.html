@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arun Raj - Product & Growth Marketer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #1a1512;
+            --bg-dark-elevated: #2a2320;
+            --text-dark-primary: #f4ede4;
+            --text-dark-secondary: #b8a99a;
+            --accent-warm: #d4a574;
+            
+            --bg-light: #F8F6F3;
+            --bg-light-elevated: #F0EDE8;
+            --text-light-primary: #1a1512;
+            --text-light-secondary: #5f5449;
+            --accent-cool: #7a6a5c;
+            
+            --border-dark: rgba(244, 237, 228, 0.12);
+            --border-light: rgba(26, 21, 18, 0.08);
+            
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Work Sans', -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        /* Global Heading Font: Spectral (Serif) */
+        h1, h2, h3 {
+            font-family: 'Spectral', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+            padding-top: 6rem;
+            padding-bottom: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            padding: 0 2rem;
+        }
+
+        /* Hero Grid Layout - UPDATED */
+        .hero-layout {
+            display: flex; /* Changed to Flex to control exact percentages */
+            justify-content: space-between; /* This handles the gap naturally */
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left {
+            width: 60%; /* Specific requirement */
+            padding-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-left h1 {
+            font-family: 'Spectral', serif;
+            font-size: 3rem; 
+            margin-bottom: 0.5rem;
+            color: var(--text-dark-primary);
+            line-height: 1.1;
+        }
+
+        .hero-left h2 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-dark-primary);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-left p.hero-tagline {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.125rem;
+            color: var(--text-dark-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border: 1.5px solid var(--text-dark-primary);
+            background: transparent;
+            color: var(--text-dark-primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            background: var(--text-dark-primary);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Right Side - UPDATED */
+        .hero-right {
+            width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align to bottom */
+    align-items: center;
+    height: 100%;
+    position: relative;
+    min-height: 80vh; /* ADD THIS - gives the container actual height */
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0;
+            height: auto; 
+        }
+
+        .hero-person-img {
+width: 100%;
+    max-width: none;
+    max-height: none;
+    height: auto;
+    object-fit: contain; 
+    object-position: center;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    transform: scale(2.0);
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            padding: 6rem 2rem;
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .tech-stack h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dark-secondary);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tech-item {
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-dark-elevated);
+            border: 1px solid var(--border-dark);
+            border-radius: 6px;
+            color: var(--text-dark-secondary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            border-color: var(--accent-warm);
+            color: var(--text-dark-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            background: var(--bg-dark);
+        }
+
+        .section.light {
+            background: var(--bg-light);
+            color: var(--text-light-primary);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section.light .section-intro h2 {
+            color: var(--text-light-primary);
+        }
+
+        .section-intro p {
+            font-size: 1.125rem;
+            color: var(--text-dark-secondary);
+        }
+
+        .section.light .section-intro p {
+            color: var(--text-light-secondary);
+        }
+
+        /* Work Items */
+        .work-item {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 8rem;
+        }
+
+        .work-item.reverse {
+            grid-template-columns: 1fr 3fr;
+        }
+
+        /* Generic Container for Images */
+        .work-image {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-dark);
+            background: var(--bg-dark-elevated);
+            min-height: 500px;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark-secondary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* If it's a link (like HRAI), add cursor pointer */
+        a.work-image {
+            cursor: pointer;
+            text-decoration: none;
+            display: block; /* Ensure it fills space */
+        }
+        
+        /* If it's a lightbox trigger (div), add pointer */
+        div.work-image {
+            cursor: pointer;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;        
+            object-position: top left; /* Default alignment */
+        }
+
+        .section.light .work-image {
+            border-color: var(--border-light);
+            background: var(--bg-light-elevated);
+            color: var(--text-light-secondary);
+        }
+
+        .work-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Only show "Zoom" hint on divs (Lightbox items), not links */
+        div.work-image::after {
+            content: '🔍 Click to zoom';
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            color: white;
+            pointer-events: none;
+        }
+        
+        /* Show "Visit Site" hint on links */
+        a.work-image::after {
+            content: '↗ Visit Website';
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            color: white;
+            pointer-events: none;
+        }
+
+        .work-image:hover::after {
+            opacity: 1;
+        }
+
+        .work-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark-primary);
+        }
+
+        .section.light .work-text h3 {
+            color: var(--text-light-primary);
+        }
+
+        .work-text p {
+            color: var(--text-dark-secondary);
+            line-height: 1.7;
+        }
+
+        .section.light .work-text p {
+            color: var(--text-light-secondary);
+        }
+
+        /* Composite Image Logic */
+        .composite-image {
+            position: relative;
+            height: 60vh; 
+            min-height: 500px;
+            max-height: 85vh;
+        }
+
+        .composite-image .work-image {
+            position: absolute;
+            min-height: auto;
+            max-height: none; 
+            background: var(--bg-dark-elevated);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .composite-image .work-image:first-child {
+            left: 0;
+            top: 0;
+            width: 80%;
+            height: 80%; 
+            z-index: 1;
+        }
+
+        .composite-image .work-image:last-child {
+            right: 0;
+            top: 15%; 
+            bottom: auto;
+            width: 30%;
+            height: 85%;
+            z-index: 2;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-dark);
+        }
+
+        /* Binance Section */
+        .binance-layout {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Wave Divider */
+        .wave-transition {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+            background-color: var(--bg-light); 
+        }
+
+        .wave-transition svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .wave-transition path.fill-dark {
+            fill: var(--bg-dark);
+        }
+
+        /* Callout Box */
+        .callout {
+            background: var(--bg-light-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .callout h3 {
+            font-size: 1.5rem;
+            color: var(--text-light-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .callout p {
+            color: var(--text-light-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-column {
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            background: white;
+            position: relative;
+        }
+
+        .comparison-column h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            color: var(--text-light-secondary);
+        }
+
+        .comparison-column.new {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.06) 0%, white 100%);
+            border: 1.5px solid var(--accent-cool);
+            box-shadow: 0 4px 12px rgba(122, 106, 92, 0.12);
+        }
+
+        .comparison-column.new::before {
+            content: '✓ New Positioning';
+            position: absolute;
+            top: -12px;
+            right: 1rem;
+            background: var(--accent-cool);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .comparison-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .comparison-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .comparison-label {
+            font-size: 0.813rem;
+            font-weight: 600;
+            color: var(--accent-cool);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-light-secondary);
+        }
+
+        /* Card Section Headers */
+        .card-section {
+            margin-top: 8rem;
+        }
+
+        .card-section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card-section-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light-primary);
+        }
+
+        .card-section-header p {
+            color: var(--text-light-secondary);
+            font-size: 1rem;
+        }
+
+        /* PMF Cards */
+        .pmf-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vs-divider {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-cool);
+            padding: 0 1rem;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card-grid.single {
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            margin: 2rem auto 0;
+        }
+
+        a.card {
+            display: block; 
+            text-decoration: none; 
+            background: var(--bg-light-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        a.card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-cool);
+        }
+
+        a.card.featured {
+            border: 1.5px solid var(--accent-cool);
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.05) 0%, var(--bg-light-elevated) 100%);
+        }
+
+        .card-thumbnail {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--accent-cool) 100%);
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+        }
+        
+        .card-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .card h4 {
+            font-size: 1.05rem;
+            color: var(--text-light-primary);
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem 15rem; 
+            background: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-container {
+            max-width: 700px;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .footer-container p {
+            font-family: 'Spectral', Georgia, serif;
+            font-size: 1.35rem;
+            color: var(--text-light-primary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-container p:last-of-type {
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            padding: 0.875rem 1.75rem;
+            border: 1.5px solid var(--text-light-primary);
+            background: transparent;
+            color: var(--text-light-primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-link:hover {
+            background: var(--text-light-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-link.email {
+            border-color: var(--accent-cool);
+            color: var(--accent-cool);
+        }
+
+        .footer-link.email:hover {
+            background: var(--accent-cool);
+            color: white;
+        }
+
+        /* Spacing after last section */
+        .section.light:last-of-type {
+            padding-bottom: 4rem;
+        }
+
+        /* Lightbox Modal - FIXED SCROLL ISSUE */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            /* Fixes the sizing logic */
+            width: auto;
+            height: auto;
+            max-width: 95vw;
+            max-height: 95vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content img {
+            width: auto;
+            height: auto;
+            /* Ensures image never exceeds screen size */
+            max-width: 100%; 
+            max-height: 90vh; 
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            background: var(--accent-cool);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive - UPDATED */
+        @media (max-width: 968px) {
+            .hero-layout {
+                flex-direction: column; /* Switched to Flex Column */
+                text-align: left;
+                gap: 3rem;
+                align-items: center;
+            }
+            
+            .hero-left, .hero-right {
+                width: 100%; /* Reset widths for mobile */
+            }
+
+            .hero-right {
+                order: -1; 
+            }
+
+            .hero-image-wrapper {
+                justify-content: center; 
+                align-items: center;
+            }
+
+            .work-item,
+            .work-item.reverse,
+            .binance-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid,
+            .pmf-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vs-divider {
+                display: none;
+            }
+
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+
+            .composite-image {
+                height: 500px;
+            }
+            .composite-image .work-image:first-child {
+                width: 90%;
+                height: 60%;
+            }
+            .composite-image .work-image:last-child {
+                width: 45%;
+                height: 60%;
+                top: 30%; 
+            }
+
+            .work-image {
+                max-height: 60vh;
+                min-height: 300px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-layout">
+                <div class="hero-left">
+                    <h1>Arun Raj</h1>
+                    <h2>Product & Growth Marketer | 0→1 Builder</h2>
+                    <p class="hero-tagline">With a founder's mindset, I build marketing systems from scratch. Frugal with budgets, good on results. I have a strong business acumen.</p>
+                    <a href="resume.pdf" class="cta-button" download>Get my resume</a>
+                </div>
+                <div class="hero-right">
+                    <div class="hero-image-wrapper">
+                        <!-- Object Position: Center (Floating effect) -->
+                        <img src="images/arun_hero_image.png" alt="Arun Raj" class="hero-person-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="container">
+            <h3>My Tech Stack</h3>
+            <div class="tech-grid">
+                <span class="tech-item">Google AI Studio</span>
+                <span class="tech-item">Canva</span>
+                <span class="tech-item">Framer</span>
+                <span class="tech-item">Ahrefs</span>
+                <span class="tech-item">Apollo.io</span>
+                <span class="tech-item">n8n</span>
+                <span class="tech-item">Zapier</span>
+                <span class="tech-item">Jira</span>
+                <span class="tech-item">GA4</span>
+                <span class="tech-item">Twitter Ads</span>
+                <span class="tech-item">HubSpot</span>
+                <span class="tech-item">Brevo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2C Growth Marketing -->
+    <section class="section">
+        <div class="container">
+            <div class="section-intro">
+                <h2>B2C Growth Marketing</h2>
+                <p>Co-founded a crypto platform (Earna). Took charge of Twitter, website, analytics, and partnerships. Grew the user base from 0 to 10k.</p>
+            </div>
+
+            <!-- Attribution Tracking -->
+            <div class="work-item">
+                <div class="work-image" data-position="top">
+                    <!-- USE STYLE HERE TO ADJUST POSITIONING IF NEEDED -->
+                    <img src="images/GA4_attribution.png" alt="GA4 Attribution Table">
+                </div>
+                <div class="work-text">
+                    <h3>Attribution Tracking</h3>
+                    <p>Tracking 2,400+ signups from specific Telegram campaigns.</p>
+                </div>
+            </div>
+
+            <!-- Product Funnel -->
+            <div class="work-item reverse">
+                <div class="work-text">
+                    <h3>Product Funnel</h3>
+                    <p>Full funnel tracking: From App Open to $412k in Deposits.</p>
+                </div>
+                <div class="work-image" data-position="top">
+                    <img src="images/GA4_product_funnel.PNG" alt="GA4 Product Funnel">
+                </div>
+            </div>
+
+            <!-- Lifecycle Engine -->
+            <div class="work-item">
+                <div class="composite-image">
+                    <div class="work-image" data-position="center">
+                        <img src="images/hubspot_dashboard.PNG" alt="HubSpot Dashboard">
+                    </div>
+                    <div class="work-image" data-position="center">
+                        <img src="images/hubspot_email.png" alt="HubSpot Email Preview">
+                    </div>
+                </div>
+                <div class="work-text">
+                    <h3>Lifecycle Engine</h3>
+                    <p>Lifecycle management via HubSpot. I designed the actual creatives used.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Binance Labs -->
+    <section class="section">
+        <div class="container">
+            <div class="binance-layout">
+                <div class="work-text">
+                    <h3>Program Marketing</h3>
+                    <p>Managed the Incubation Program for the Indian market. Handled all communications, copywriting, and social narratives to successfully onboard 20+ startups into the program.</p>
+                </div>
+                <div class="work-image" data-position="top">
+                    <img src="images/binance.png" alt="Binance Landing Page">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave-transition">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+            <path class="fill-dark" d="M0,50 Q300,20 600,50 T1200,50 L1200,0 L0,0 Z" stroke="none"/>
+            <path d="M0,50 Q300,20 600,50 T1200,50" fill="none" stroke="#F8F6F3" stroke-width="1" opacity="0.3"/>
+        </svg>
+    </div>
+
+    <!-- B2B Product Marketing -->
+    <section class="section light">
+        <div class="container">
+            <div class="section-intro">
+                <h2>B2B Product Marketing</h2>
+                <p>Marketing Manager at GENIE AI. I lead a team of six. I own the product narratives and personally execute targeted cold outreach campaigns, maintaining a 50% open rate.</p>
+            </div>
+
+            <div class="callout">
+                <h3>Strategic Positioning Exercise</h3>
+                <p>Led strategic repositioning from 'PropertyPlus' to 'CommunityOS' - moving the product out of commoditized PropTech into a new category to unlock enterprise + government buyers.</p>
+                
+                <h4 style="margin-bottom: 1.5rem; color: var(--text-light-primary); font-size: 1.125rem;">Product Repositioning: Property+ → CommunityOS™</h4>
+                
+                <div class="comparison-table">
+                    <div class="comparison-column">
+                        <h4>Property+ (Original)</h4>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Narrative</div>
+                            <div class="comparison-text">Feature-led narrative: Proptech platform with AI, digital twins, IoT, and voice capabilities</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Target Audience</div>
+                            <div class="comparison-text">Property managers and facility operators focused on operational efficiency</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Market Category</div>
+                            <div class="comparison-text">Proptech/facility management tool (commoditized, feature-comparison driven)</div>
+                        </div>
+                    </div>
+                    <div class="comparison-column new">
+                        <h4>CommunityOS™ (New)</h4>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Narrative</div>
+                            <div class="comparison-text">Value-led narrative: Spatial operating system that transforms physical spaces into adaptive community experiences</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Target Audience</div>
+                            <div class="comparison-text">Governments, developers, and community leaders seeking engagement and belonging, not just operations</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Market Category</div>
+                            <div class="comparison-text">Spatial OS—creating blue ocean by combining people experience + place management in one ecosystem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Product-Market Fit Tests</h3>
+                    <p>Ran A/B narrative tests on the same core product to validate PMF across different segments</p>
+                </div>
+                
+                <div class="pmf-container">
+                    <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aitwin.png" alt="AI Twin Deck">
+                        </div>
+                        <h4>AI Twin: Influencer Narrative</h4>
+                    </a>
+                    <div class="vs-divider">VS</div>
+                    <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aiconcierge.png" alt="AI Concierge Deck">
+                        </div>
+                        <h4>AI Concierge: Enterprise Narrative</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Investor Materials</h3>
+                    <p>Comprehensive company narrative for fundraising</p>
+                </div>
+                
+                <div class="card-grid single">
+                    <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/company_deck.png" alt="Company Deck">
+                        </div>
+                        <h4>Company Narrative Deck</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical SEO (Now a Link, Not Lightbox) -->
+    <section class="section light">
+        <div class="container">
+            <div class="work-item">
+                <a href="https://humanratedai.com" target="_blank" class="work-image">
+                    <img src="images/hrai_site.png" alt="HumanRatedAI Site">
+                </a>
+                <div class="work-text">
+                    <h3>Technical SEO</h3>
+                    <p>Built humanratedai.com solo to master hosting and Core Web Vitals. Achieved 100% PageSpeed rating.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>I'm a 7+ year marketer who thrives in early-stage chaos.</p>
+            <p>If you need someone who understands messaging, growth, and GTM - I'm your guy.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com" class="footer-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:arunandfibo@gmail.com" class="footer-link email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    Email Me
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img id="lightbox-img" src="" alt="Zoomed image">
+        </div>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click handlers ONLY to divs (not links)
+        document.querySelectorAll('div.work-image').forEach(img => {
+            img.addEventListener('click', function() {
+                const imgElement = this.querySelector('img');
+                if (imgElement && !imgElement.classList.contains('hero-person-img')) {
+                    openLightbox(imgElement.src);
+                } 
+            });
+        });
+        
+        // Composite image handler
+        document.querySelectorAll('.composite-image .work-image').forEach(img => {
+            img.addEventListener('click', function(e) {
+                 e.stopPropagation(); 
+                 const imgElement = this.querySelector('img');
+                 if(imgElement) openLightbox(imgElement.src);
+            });
+        });
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
