@@ -48,17 +48,18 @@
             line-height: 1.2;
         }
 
-        /* Hero Section */
+        /* Hero Section - UPDATED */
         .hero {
             min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
             background: var(--bg-dark);
             padding-top: 6rem;
             padding-bottom: 0;
+            /* User Update: */
+            overflow: hidden;
         }
 
         .container {
@@ -70,21 +71,23 @@
             padding: 0 2rem;
         }
 
-        /* Hero Grid Layout - DESKTOP FIXED */
+        /* Hero Grid Layout - UPDATED */
         .hero-layout {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             width: 100%;
-            gap: 2rem; /* Space between text and image */
+            /* User Update: */
+            align-items: flex-start;
         }
 
         .hero-left {
-            flex: 1; /* Takes remaining space */
             padding-bottom: 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            /* User Update: */
+            width: 55%;
+            z-index: 2;
         }
 
         .hero-left h1 {
@@ -134,33 +137,36 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Right Side - FIXED WIDTH */
+        /* Hero Right Side - UPDATED */
         .hero-right {
-            flex: 0 0 500px; /* Locked to 500px width */
-            width: 500px;
             display: flex;
             justify-content: center;
             align-items: center;
+            /* User Update: */
+            width: 45%;
             position: relative;
+            overflow: visible;
         }
 
         .hero-image-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-bottom: 0;
-            height: auto; 
+            height: auto;
+            /* User Update: */
+            position: relative;
+            width: 100%;
+            overflow: visible;
         }
 
         .hero-person-img {
-            width: 100%; /* Fills the 500px container */
-            max-width: none;
-            max-height: none;
-            height: auto;
-            object-fit: contain; 
+            object-fit: contain;
             object-position: center;
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+            /* User Update: */
+            width: 130%;
+            max-width: none;
+            height: auto;
+            transform: translateX(10%);
+            display: block;
         }
 
         /* Tech Stack */
@@ -764,13 +770,13 @@
             }
         }
 
-        /* Responsive - MOBILE ORDERING FIXED */
+        /* Responsive */
         @media (max-width: 968px) {
             .hero-layout {
                 flex-direction: column; /* Stack Vertically */
                 text-align: center;     /* Center text */
                 gap: 3rem;
-                align-items: center;
+                align-items: center;    /* Reset from flex-start to center */
             }
             
             .hero-left {
@@ -788,9 +794,15 @@
 
             .hero-right {
                 width: 100%;
-                flex: auto; /* Unlock fixed width */
+                flex: auto; 
                 max-width: 400px;
                 order: 1; /* Image goes FIRST (top) */
+            }
+            
+            /* IMPORTANT: Reset the 130% overflow hack for mobile */
+            .hero-person-img {
+                width: 100%; 
+                transform: none;
             }
 
             .hero-image-wrapper {
