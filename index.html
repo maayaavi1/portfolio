@@ -70,16 +70,17 @@
             padding: 0 2rem;
         }
 
-        /* Hero Grid Layout - UPDATED */
+        /* Hero Grid Layout - DESKTOP FIXED */
         .hero-layout {
-            display: flex; /* Changed to Flex to control exact percentages */
-            justify-content: space-between; /* This handles the gap naturally */
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             width: 100%;
+            gap: 2rem; /* Space between text and image */
         }
 
         .hero-left {
-            width: 60%; /* Specific requirement */
+            flex: 1; /* Takes remaining space */
             padding-bottom: 4rem;
             display: flex;
             flex-direction: column;
@@ -133,16 +134,14 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Right Side - UPDATED */
+        /* Hero Right Side - FIXED WIDTH */
         .hero-right {
-            width: 38%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Align to bottom */
-    align-items: center;
-    height: 100%;
-    position: relative;
-    min-height: 80vh; /* ADD THIS - gives the container actual height */
+            flex: 0 0 500px; /* Locked to 500px width */
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         .hero-image-wrapper {
@@ -155,14 +154,13 @@
         }
 
         .hero-person-img {
-width: 100%;
-    max-width: none;
-    max-height: none;
-    height: auto;
-    object-fit: contain; 
-    object-position: center;
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
-    transform: scale(2.0);
+            width: 100%; /* Fills the 500px container */
+            max-width: none;
+            max-height: none;
+            height: auto;
+            object-fit: contain; 
+            object-position: center;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
         }
 
         /* Tech Stack */
@@ -766,21 +764,33 @@ width: 100%;
             }
         }
 
-        /* Responsive - UPDATED */
+        /* Responsive - MOBILE ORDERING FIXED */
         @media (max-width: 968px) {
             .hero-layout {
-                flex-direction: column; /* Switched to Flex Column */
-                text-align: left;
+                flex-direction: column; /* Stack Vertically */
+                text-align: center;     /* Center text */
                 gap: 3rem;
                 align-items: center;
             }
             
-            .hero-left, .hero-right {
-                width: 100%; /* Reset widths for mobile */
+            .hero-left {
+                width: 100%;
+                padding-bottom: 0;
+                padding-right: 0;
+                order: 2; /* Text goes SECOND (bottom) */
+                align-items: center; 
+            }
+            
+            .hero-left p.hero-tagline {
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .hero-right {
-                order: -1; 
+                width: 100%;
+                flex: auto; /* Unlock fixed width */
+                max-width: 400px;
+                order: 1; /* Image goes FIRST (top) */
             }
 
             .hero-image-wrapper {
