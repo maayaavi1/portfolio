@@ -144,27 +144,45 @@
             overflow: visible; 
         }
 
+        /* UPDATED: IMAGE WRAPPER WITH GLOW/AURA */
         .hero-image-wrapper {
             margin-bottom: 0;
             height: auto;
             position: relative;
             width: 100%;
             overflow: visible;
+            
+            /* The Aura Gradient */
+            background: radial-gradient(
+                circle at center 50%, 
+                rgba(212, 165, 116, 0.12) 0%, 
+                transparent 70%
+            );
+            /* Center the glow */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
+        /* UPDATED: IMAGE WITH BORDER FIXES */
         .hero-person-img {
             object-fit: contain;
             object-position: center;
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
             
-            /* --- YOUR REQUESTED CHANGES HERE --- */
             width: 125%; 
             max-width: none;
             height: auto;
             display: block;
-            
-            /* PULLS IMAGE LEFT BY 20% */
             transform: translateX(-20%); 
+
+            /* The Filter Chain */
+            filter: 
+                contrast(1.1) /* Crisps up the image */
+                drop-shadow(0px 0px 1px #1a1512) /* Hides white pixels */
+                drop-shadow(0px 0px 1px #1a1512) /* Double layer for better coverage */
+                drop-shadow(10px 10px 30px rgba(0,0,0,0.6)); /* Actual shadow */
+            
+            image-rendering: -webkit-optimize-contrast;
         }
 
         /* Tech Stack */
@@ -806,6 +824,7 @@
             .hero-image-wrapper {
                 justify-content: center; 
                 align-items: center;
+                background: none; /* Removes the glow for mobile if it's too much */
             }
 
             .work-item,
@@ -950,4 +969,195 @@
                     <h3>Program Marketing</h3>
                     <p>Managed the Incubation Program for the Indian market. Handled all communications, copywriting, and social narratives to successfully onboard 20+ startups into the program.</p>
                 </div>
-                <div class="work-image"
+                <div class="work-image" data-position="top">
+                    <img src="images/binance.png" alt="Binance Landing Page">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave-transition">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+            <path class="fill-dark" d="M0,50 Q300,20 600,50 T1200,50 L1200,0 L0,0 Z" stroke="none"/>
+            <path d="M0,50 Q300,20 600,50 T1200,50" fill="none" stroke="#F8F6F3" stroke-width="1" opacity="0.3"/>
+        </svg>
+    </div>
+
+    <!-- B2B Product Marketing -->
+    <section class="section light">
+        <div class="container">
+            <div class="section-intro">
+                <h2>B2B Product Marketing</h2>
+                <p>Marketing Manager at GENIE AI. I lead a team of six. I own the product narratives and personally execute targeted cold outreach campaigns, maintaining a 50% open rate.</p>
+            </div>
+
+            <div class="callout">
+                <h3>Strategic Positioning Exercise</h3>
+                <p>Led strategic repositioning from 'PropertyPlus' to 'CommunityOS' - moving the product out of commoditized PropTech into a new category to unlock enterprise + government buyers.</p>
+                
+                <h4 style="margin-bottom: 1.5rem; color: var(--text-light-primary); font-size: 1.125rem;">Product Repositioning: Property+ → CommunityOS™</h4>
+                
+                <div class="comparison-table">
+                    <div class="comparison-column">
+                        <h4>Property+ (Original)</h4>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Narrative</div>
+                            <div class="comparison-text">Feature-led narrative: Proptech platform with AI, digital twins, IoT, and voice capabilities</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Target Audience</div>
+                            <div class="comparison-text">Property managers and facility operators focused on operational efficiency</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Market Category</div>
+                            <div class="comparison-text">Proptech/facility management tool (commoditized, feature-comparison driven)</div>
+                        </div>
+                    </div>
+                    <div class="comparison-column new">
+                        <h4>CommunityOS™ (New)</h4>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Narrative</div>
+                            <div class="comparison-text">Value-led narrative: Spatial operating system that transforms physical spaces into adaptive community experiences</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Target Audience</div>
+                            <div class="comparison-text">Governments, developers, and community leaders seeking engagement and belonging, not just operations</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Market Category</div>
+                            <div class="comparison-text">Spatial OS—creating blue ocean by combining people experience + place management in one ecosystem</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Product-Market Fit Tests</h3>
+                    <p>Ran A/B narrative tests on the same core product to validate PMF across different segments</p>
+                </div>
+                
+                <div class="pmf-container">
+                    <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aitwin.png" alt="AI Twin Deck">
+                        </div>
+                        <h4>AI Twin: Influencer Narrative</h4>
+                    </a>
+                    <div class="vs-divider">VS</div>
+                    <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aiconcierge.png" alt="AI Concierge Deck">
+                        </div>
+                        <h4>AI Concierge: Enterprise Narrative</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Investor Materials</h3>
+                    <p>Comprehensive company narrative for fundraising</p>
+                </div>
+                
+                <div class="card-grid single">
+                    <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/company_deck.png" alt="Company Deck">
+                        </div>
+                        <h4>Company Narrative Deck</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical SEO (Now a Link, Not Lightbox) -->
+    <section class="section light">
+        <div class="container">
+            <div class="work-item">
+                <a href="https://humanratedai.com" target="_blank" class="work-image">
+                    <img src="images/hrai_site.png" alt="HumanRatedAI Site">
+                </a>
+                <div class="work-text">
+                    <h3>Technical SEO</h3>
+                    <p>Built humanratedai.com solo to master hosting and Core Web Vitals. Achieved 100% PageSpeed rating.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>I'm a 7+ year marketer who thrives in early-stage chaos.</p>
+            <p>If you need someone who understands messaging, growth, and GTM - I'm your guy.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com" class="footer-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:arunandfibo@gmail.com" class="footer-link email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    Email Me
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img id="lightbox-img" src="" alt="Zoomed image">
+        </div>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click handlers ONLY to divs (not links)
+        document.querySelectorAll('div.work-image').forEach(img => {
+            img.addEventListener('click', function() {
+                const imgElement = this.querySelector('img');
+                if (imgElement && !imgElement.classList.contains('hero-person-img')) {
+                    openLightbox(imgElement.src);
+                } 
+            });
+        });
+        
+        // Composite image handler
+        document.querySelectorAll('.composite-image .work-image').forEach(img => {
+            img.addEventListener('click', function(e) {
+                 e.stopPropagation(); 
+                 const imgElement = this.querySelector('img');
+                 if(imgElement) openLightbox(imgElement.src);
+            });
+        });
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
