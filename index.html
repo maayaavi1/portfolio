@@ -144,44 +144,35 @@
             overflow: visible; 
         }
 
-        /* UPDATED: IMAGE WRAPPER WITH GLOW/AURA */
         .hero-image-wrapper {
             margin-bottom: 0;
             height: auto;
             position: relative;
             width: 100%;
             overflow: visible;
-            
-            /* The Aura Gradient */
             background: radial-gradient(
                 circle at center 50%, 
                 rgba(212, 165, 116, 0.12) 0%, 
                 transparent 70%
             );
-            /* Center the glow */
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* UPDATED: IMAGE WITH BORDER FIXES */
         .hero-person-img {
             object-fit: contain;
             object-position: center;
-            
             width: 125%; 
             max-width: none;
             height: auto;
             display: block;
             transform: translateX(-20%); 
-
-            /* The Filter Chain */
             filter: 
-                contrast(1.1) /* Crisps up the image */
-                drop-shadow(0px 0px 1px #1a1512) /* Hides white pixels */
-                drop-shadow(0px 0px 1px #1a1512) /* Double layer for better coverage */
-                drop-shadow(10px 10px 30px rgba(0,0,0,0.6)); /* Actual shadow */
-            
+                contrast(1.1) 
+                drop-shadow(0px 0px 1px #1a1512) 
+                drop-shadow(0px 0px 1px #1a1512) 
+                drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
             image-rendering: -webkit-optimize-contrast;
         }
 
@@ -272,11 +263,15 @@
             margin-bottom: 8rem;
         }
 
+        /* FIX: Remove bottom margin from the last item so spacing to next section is even */
+        .work-item:last-child {
+            margin-bottom: 0;
+        }
+
         .work-item.reverse {
             grid-template-columns: 1fr 3fr;
         }
 
-        /* Generic Container for Images */
         .work-image {
             border-radius: 8px;
             overflow: hidden;
@@ -293,14 +288,12 @@
             position: relative;
         }
 
-        /* If it's a link (like HRAI), add cursor pointer */
         a.work-image {
             cursor: pointer;
             text-decoration: none;
-            display: block; /* Ensure it fills space */
+            display: block; 
         }
         
-        /* If it's a lightbox trigger (div), add pointer */
         div.work-image {
             cursor: pointer;
         }
@@ -309,7 +302,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;        
-            object-position: top left; /* Default alignment */
+            object-position: top left; 
+        }
+
+        /* Helper class for filling images completely (Product Funnel Fix) */
+        .img-fill {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            transform: scale(1.02); /* Slight zoom to eat edges */
         }
 
         .section.light .work-image {
@@ -323,7 +324,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        /* Only show "Zoom" hint on divs (Lightbox items), not links */
         div.work-image::after {
             content: '🔍 Click to zoom';
             position: absolute;
@@ -339,7 +339,6 @@
             pointer-events: none;
         }
         
-        /* Show "Visit Site" hint on links */
         a.work-image::after {
             content: '↗ Visit Website';
             position: absolute;
@@ -542,7 +541,8 @@
 
         .card-section-header {
             text-align: center;
-            margin-bottom: 2rem;
+            /* SPACER FIX: Increased bottom margin to separate title from decks */
+            margin-bottom: 4rem; 
         }
 
         .card-section-header h3 {
@@ -605,9 +605,11 @@
             border-color: var(--accent-cool);
         }
 
+        /* FEATURED CARD FIX: Removed the colored border to match others */
         a.card.featured {
-            border: 1.5px solid var(--accent-cool);
             background: linear-gradient(135deg, rgba(212, 165, 116, 0.05) 0%, var(--bg-light-elevated) 100%);
+            /* Border matches standard cards now */
+            border: 1px solid var(--border-light); 
         }
 
         .card-thumbnail {
@@ -638,7 +640,8 @@
 
         /* Footer */
         .footer {
-            padding: 4rem 2rem 15rem; 
+            /* SPACER FIX: Reduced bottom padding from 15rem to 11rem (~25% less) */
+            padding: 4rem 2rem 11rem; 
             background: var(--bg-light);
             display: flex;
             justify-content: center;
@@ -710,7 +713,7 @@
             padding-bottom: 4rem;
         }
 
-        /* Lightbox Modal - FIXED SCROLL ISSUE */
+        /* Lightbox Modal */
         .lightbox {
             display: none;
             position: fixed;
@@ -730,7 +733,6 @@
         }
 
         .lightbox-content {
-            /* Fixes the sizing logic */
             width: auto;
             height: auto;
             max-width: 95vw;
@@ -744,7 +746,6 @@
         .lightbox-content img {
             width: auto;
             height: auto;
-            /* Ensures image never exceeds screen size */
             max-width: 100%; 
             max-height: 90vh; 
             object-fit: contain;
@@ -789,17 +790,17 @@
         /* Responsive */
         @media (max-width: 968px) {
             .hero-layout {
-                flex-direction: column; /* Stack Vertically */
-                text-align: center;     /* Center text */
+                flex-direction: column;
+                text-align: center;
                 gap: 3rem;
-                align-items: center;    /* Reset to center */
+                align-items: center;
             }
             
             .hero-left {
                 width: 100%;
                 padding-bottom: 0;
                 padding-right: 0;
-                order: 2; /* Text goes SECOND (bottom) */
+                order: 2;
                 align-items: center; 
             }
             
@@ -812,10 +813,9 @@
                 width: 100%;
                 flex: auto; 
                 max-width: 400px;
-                order: 1; /* Image goes FIRST (top) */
+                order: 1; 
             }
             
-            /* IMPORTANT: Reset the sizing for mobile */
             .hero-person-img {
                 width: 100%; 
                 transform: none;
@@ -824,7 +824,7 @@
             .hero-image-wrapper {
                 justify-content: center; 
                 align-items: center;
-                background: none; /* Removes the glow for mobile if it's too much */
+                background: none; 
             }
 
             .work-item,
@@ -932,14 +932,15 @@
                 </div>
             </div>
 
-            <!-- Product Funnel -->
+            <!-- Product Funnel (FIXED IMAGE FILL) -->
             <div class="work-item reverse">
                 <div class="work-text">
                     <h3>Product Funnel</h3>
                     <p>Full funnel tracking: From App Open to $412k in Deposits.</p>
                 </div>
+                <!-- ADDED IMG-FILL CLASS HERE -->
                 <div class="work-image" data-position="top">
-                    <img src="images/GA4_product_funnel.PNG" alt="GA4 Product Funnel">
+                    <img src="images/GA4_product_funnel.PNG" alt="GA4 Product Funnel" class="img-fill">
                 </div>
             </div>
 
