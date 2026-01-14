@@ -165,26 +165,32 @@
         }
 
         .hero-person-img {
-object-fit: contain;
-    object-position: bottom center;
+/* --- THE CONTROLS --- */
     
-    /* UPDATED SIZING FOR PORTRAIT IMAGE */
-    width: auto;       /* Let aspect ratio decide width */
-    max-width: 120%;   /* Allow it to be slightly wider than column if needed */
-    height: auto;      
-    max-height: 85vh;  /* KEY FIX: Stops it from being taller than the screen */
+    /* 1. Stop forcing Width. Let the image determine its own width based on height. */
+    width: auto; 
     
-    display: block;
-    transform: none;   /* REMOVED the -20% shift */
+    /* 2. The Height Limit. Lower this number (e.g., 60vh) to shrink the image. */
+    max-height: 70vh; 
+    
+    /* 3. Safety Rail. Don't let it be wider than the column. */
+    max-width: 100%; 
+    
+    /* -------------------- */
 
-    /* The Filter Chain to fix edges */
+    height: auto;
+    display: block;
+    object-fit: contain;
+    
+    /* Reset Position (No shifting) */
+    transform: none; 
+
+    /* Filters for clarity */
     filter: 
         contrast(1.1) 
         drop-shadow(0px 0px 1px #1a1512) 
         drop-shadow(0px 0px 1px #1a1512) 
         drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
-    
-    image-rendering: -webkit-optimize-contrast;
 }
 
   
@@ -1178,4 +1184,5 @@ object-fit: contain;
     </script>
 </body>
 </html>
+
 
