@@ -146,34 +146,50 @@
 
         .hero-image-wrapper {
             margin-bottom: 0;
-            height: auto;
-            position: relative;
-            width: 100%;
-            overflow: visible;
-            background: radial-gradient(
-                circle at center 50%, 
-                rgba(212, 165, 116, 0.12) 0%, 
-                transparent 70%
-            );
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    height: auto;
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    
+    /* The Aura Gradient */
+    background: radial-gradient(
+        circle at center 50%, 
+        rgba(212, 165, 116, 0.12) 0%, 
+        transparent 70%
+    );
+    /* Center the glow */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns image to the bottom visually */
+}
         }
 
         .hero-person-img {
-            object-fit: contain;
-            object-position: center;
-            width: 125%; 
-            max-width: none;
-            height: auto;
-            display: block;
-            transform: translateX(-20%); 
-            filter: 
-                contrast(1.1) 
-                drop-shadow(0px 0px 1px #1a1512) 
-                drop-shadow(0px 0px 1px #1a1512) 
-                drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
-            image-rendering: -webkit-optimize-contrast;
+object-fit: contain;
+    object-position: bottom center;
+    
+    /* UPDATED SIZING FOR PORTRAIT IMAGE */
+    width: auto;       /* Let aspect ratio decide width */
+    max-width: 120%;   /* Allow it to be slightly wider than column if needed */
+    height: auto;      
+    max-height: 85vh;  /* KEY FIX: Stops it from being taller than the screen */
+    
+    display: block;
+    transform: none;   /* REMOVED the -20% shift */
+
+    /* The Filter Chain to fix edges */
+    filter: 
+        contrast(1.1) 
+        drop-shadow(0px 0px 1px #1a1512) 
+        drop-shadow(0px 0px 1px #1a1512) 
+        drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
+    
+    image-rendering: -webkit-optimize-contrast;
+}
+
+  
+
+38.1s 
         }
 
         /* Tech Stack */
@@ -1162,3 +1178,4 @@
     </script>
 </body>
 </html>
+
