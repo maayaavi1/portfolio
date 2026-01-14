@@ -136,67 +136,57 @@
 
         /* Hero Right Side */
         .hero-right {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 45%;
-            position: relative;
-            overflow: visible; 
+           width: 45%; /* Maintained layout ratio */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically centers the content */
+    position: relative;           
         }
 
         .hero-image-wrapper {
-            margin-bottom: 0;
-    height: auto;
-    position: relative;
-    width: 100%;
-    overflow: visible;
-    
-    /* The Aura Gradient */
-    background: radial-gradient(
-        circle at center 50%, 
-        rgba(212, 165, 116, 0.12) 0%, 
-        transparent 70%
-    );
-    /* Center the glow */
+width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Aligns image to the bottom visually */
+    align-items: center;
+    position: relative;
+    
+    /* Aura */
+    background: radial-gradient(
+        circle at center 40%, 
+        rgba(212, 165, 116, 0.15) 0%, 
+        transparent 65%
+    );
 }
         }
 
         .hero-person-img {
 /* --- THE CONTROLS --- */
     
-    /* 1. Stop forcing Width. Let the image determine its own width based on height. */
-    width: auto; 
+/* --- RESPONSIVE SIZING --- */
+    width: auto;        /* CRITICAL: Allows image to get skinny to fit the height */
+    height: auto;       /* Maintains aspect ratio */
     
-    /* 2. The Height Limit. Lower this number (e.g., 60vh) to shrink the image. */
-    max-height: 70vh; 
+    max-height: 65vh;   /* The Control Knob. 65% of screen height. */
+                        /* If it's still too big, change 65vh to 55vh. */
     
-    /* 3. Safety Rail. Don't let it be wider than the column. */
-    max-width: 100%; 
-    
-    /* -------------------- */
+    max-width: 100%;    /* Safety: Never wider than the column */
+    /* ------------------------ */
 
-    height: auto;
-    display: block;
     object-fit: contain;
-    
-    /* Reset Position (No shifting) */
-    transform: none; 
+    object-position: center;
+    display: block;
+    transform: none;    /* No shifting */
 
-    /* Filters for clarity */
+    /* Filters */
     filter: 
         contrast(1.1) 
         drop-shadow(0px 0px 1px #1a1512) 
         drop-shadow(0px 0px 1px #1a1512) 
         drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
-}
+    
+    image-rendering: -webkit-optimize-contrast;}
 
-  
-
-38.1s 
-        }
+          }
 
         /* Tech Stack */
         .tech-stack {
@@ -1184,5 +1174,6 @@
     </script>
 </body>
 </html>
+
 
 
