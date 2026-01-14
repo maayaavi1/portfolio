@@ -136,57 +136,49 @@
 
         /* Hero Right Side */
         .hero-right {
-           width: 45%; /* Maintained layout ratio */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Vertically centers the content */
-    position: relative;           
+            width: 45%; /* Maintained layout ratio */
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Vertically centers the content */
+            position: relative;           
         }
 
         .hero-image-wrapper {
-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    
-    /* Aura */
-    background: radial-gradient(
-        circle at center 40%, 
-        rgba(212, 165, 116, 0.15) 0%, 
-        transparent 65%
-    );
-}
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            
+            /* Aura */
+            background: radial-gradient(
+                circle at center 40%, 
+                rgba(212, 165, 116, 0.15) 0%, 
+                transparent 65%
+            );
         }
 
         .hero-person-img {
-/* --- THE CONTROLS --- */
-    
-/* --- RESPONSIVE SIZING --- */
-    width: auto;        /* CRITICAL: Allows image to get skinny to fit the height */
-    height: auto;       /* Maintains aspect ratio */
-    
-    max-height: 65vh;   /* The Control Knob. 65% of screen height. */
-                        /* If it's still too big, change 65vh to 55vh. */
-    
-    max-width: 100%;    /* Safety: Never wider than the column */
-    /* ------------------------ */
+            width: min(36vw, 100%);
+            height: auto;
 
-    object-fit: contain;
-    object-position: center;
-    display: block;
-    transform: none;    /* No shifting */
+            max-height: 50vh;
+            max-width: 100%;
 
-    /* Filters */
-    filter: 
-        contrast(1.1) 
-        drop-shadow(0px 0px 1px #1a1512) 
-        drop-shadow(0px 0px 1px #1a1512) 
-        drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
-    
-    image-rendering: -webkit-optimize-contrast;}
+            object-fit: contain;
+            object-position: center;
+            display: block;
 
-          }
+            transform: none;
+
+            filter:
+                contrast(1.1)
+                drop-shadow(0px 0px 1px #1a1512)
+                drop-shadow(0px 0px 1px #1a1512)
+                drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
+
+            image-rendering: -webkit-optimize-contrast;
+        }
 
         /* Tech Stack */
         .tech-stack {
@@ -1047,133 +1039,4 @@ width: 100%;
             <div class="card-section">
                 <div class="card-section-header">
                     <h3>Product-Market Fit Tests</h3>
-                    <p>Ran A/B narrative tests on the same core product to validate PMF across different segments</p>
-                </div>
-                
-                <div class="pmf-container">
-                    <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
-                        <div class="card-thumbnail">
-                            <img src="images/aitwin.png" alt="AI Twin Deck">
-                        </div>
-                        <h4>AI Twin: Influencer Narrative</h4>
-                    </a>
-                    <div class="vs-divider">VS</div>
-                    <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
-                        <div class="card-thumbnail">
-                            <img src="images/aiconcierge.png" alt="AI Concierge Deck">
-                        </div>
-                        <h4>AI Concierge: Enterprise Narrative</h4>
-                    </a>
-                </div>
-            </div>
-
-            <div class="card-section">
-                <div class="card-section-header">
-                    <h3>Investor Materials</h3>
-                    <p>Comprehensive company narrative for fundraising</p>
-                </div>
-                
-                <div class="card-grid single">
-                    <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
-                        <div class="card-thumbnail">
-                            <img src="images/company_deck.png" alt="Company Deck">
-                        </div>
-                        <h4>Company Narrative Deck</h4>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical SEO (Now a Link, Not Lightbox) -->
-    <section class="section light">
-        <div class="container">
-            <div class="work-item">
-                <a href="https://humanratedai.com" target="_blank" class="work-image">
-                    <img src="images/hrai_site.png" alt="HumanRatedAI Site">
-                </a>
-                <div class="work-text">
-                    <h3>Technical SEO</h3>
-                    <p>Built humanratedai.com solo to master hosting and Core Web Vitals. Achieved 100% PageSpeed rating.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <p>I'm a 7+ year marketer who thrives in early-stage chaos.</p>
-            <p>If you need someone who understands messaging, growth, and GTM - I'm your guy.</p>
-            <div class="footer-links">
-                <a href="https://linkedin.com" class="footer-link" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
-                </a>
-                <a href="mailto:arunandfibo@gmail.com" class="footer-link email">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    Email Me
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">×</button>
-            <img id="lightbox-img" src="" alt="Zoomed image">
-        </div>
-    </div>
-
-    <script>
-        // Lightbox functionality
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = imageSrc;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Add click handlers ONLY to divs (not links)
-        document.querySelectorAll('div.work-image').forEach(img => {
-            img.addEventListener('click', function() {
-                const imgElement = this.querySelector('img');
-                if (imgElement && !imgElement.classList.contains('hero-person-img')) {
-                    openLightbox(imgElement.src);
-                } 
-            });
-        });
-        
-        // Composite image handler
-        document.querySelectorAll('.composite-image .work-image').forEach(img => {
-            img.addEventListener('click', function(e) {
-                 e.stopPropagation(); 
-                 const imgElement = this.querySelector('img');
-                 if(imgElement) openLightbox(imgElement.src);
-            });
-        });
-
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-    </script>
-</body>
-</html>
-
-
-
+                    <p>Ran A/B narrative tests on the same core product to validate PMF across
