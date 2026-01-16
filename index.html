@@ -18,8 +18,8 @@
             --bg-dark: #1a1512;
             --bg-dark-elevated: #2a2320;
             --text-dark-primary: #f4ede4;
-            --text-dark-secondary: #b8a99a;
-            --accent-warm: #d4a574;
+            --text-dark-secondary: #c4b5a6; 
+            --accent-warm: #d9a96b;
             
             --bg-light: #F8F6F3;
             --bg-light-elevated: #F0EDE8;
@@ -75,7 +75,7 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
-            align-items: center; 
+            align-items: stretch; 
         }
 
         .hero-left {
@@ -113,8 +113,18 @@
             max-width: 90%;
         }
 
+        /* Hero Buttons Group */
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             padding: 0.875rem 2rem;
             border: 1.5px solid var(--text-dark-primary);
             background: transparent;
@@ -133,49 +143,54 @@
             color: var(--bg-dark);
             transform: translateY(-2px);
         }
+        
+        /* Secondary Button Style for LinkedIn */
+        .cta-button.secondary {
+            border-color: var(--border-dark);
+            color: var(--text-dark-secondary);
+        }
+
+        .cta-button.secondary:hover {
+            border-color: var(--text-dark-primary);
+            color: var(--text-dark-primary);
+            background: transparent;
+        }
 
         /* Hero Right Side */
         .hero-right {
-            width: 45%; /* Maintained layout ratio */
+            width: 45%; 
             display: flex;
             justify-content: center;
-            align-items: center; /* Vertically centers the content */
-            position: relative;           
+            align-items: flex-end; 
+            position: relative;
         }
 
         .hero-image-wrapper {
-            width: 100%;
+             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
             position: relative;
-            
-            /* Aura */
-            background: radial-gradient(
-                circle at center 40%, 
-                rgba(212, 165, 116, 0.15) 0%, 
-                transparent 65%
-            );
+            background: none;
         }
 
         .hero-person-img {
-            width: min(36vw, 100%);
+            width: min(49vw, 100%);
             height: auto;
-
-            max-height: 50vh;
+            max-height: 75vh;
             max-width: 100%;
 
             object-fit: contain;
-            object-position: center;
+            object-position: bottom center;
             display: block;
 
             transform: none;
+            transform-origin: bottom;
 
-            filter:
-                contrast(1.1)
-                drop-shadow(0px 0px 1px #1a1512)
-                drop-shadow(0px 0px 1px #1a1512)
-                drop-shadow(10px 10px 30px rgba(0,0,0,0.6));
+            filter: contrast(1.05);
+
+            -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 
             image-rendering: -webkit-optimize-contrast;
         }
@@ -264,10 +279,9 @@
             grid-template-columns: 3fr 1fr;
             gap: 3rem;
             align-items: center;
-            margin-bottom: 8rem;
+            margin-bottom: 6rem; 
         }
 
-        /* FIX: Remove bottom margin from the last item so spacing to next section is even */
         .work-item:last-child {
             margin-bottom: 0;
         }
@@ -276,6 +290,7 @@
             grid-template-columns: 1fr 3fr;
         }
 
+        /* --- UPDATED CONTAINER LOGIC --- */
         .work-image {
             border-radius: 8px;
             overflow: hidden;
@@ -283,28 +298,34 @@
             background: var(--bg-dark-elevated);
             min-height: 500px;
             max-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            
+            /* CHANGED: Block/Relative allows Absolute children to fill properly */
+            display: block;
+            position: relative;
+            
             color: var(--text-dark-secondary);
             font-size: 0.9rem;
             transition: var(--transition);
-            position: relative;
         }
 
         a.work-image {
             cursor: pointer;
             text-decoration: none;
-            display: block; 
         }
         
         div.work-image {
             cursor: pointer;
         }
 
+        /* --- UPDATED IMAGE FILL LOGIC --- */
         .work-image img {
+            /* CHANGED: Absolute Positioning forces the image to fill the min-height box */
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            
             object-fit: cover;        
             object-position: top left; 
         }
@@ -314,7 +335,7 @@
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
-            transform: scale(1.02); /* Slight zoom to eat edges */
+            transform: scale(1.02); 
         }
 
         .section.light .work-image {
@@ -341,6 +362,7 @@
             border-radius: 4px;
             color: white;
             pointer-events: none;
+            z-index: 10;
         }
         
         a.work-image::after {
@@ -356,6 +378,7 @@
             border-radius: 4px;
             color: white;
             pointer-events: none;
+            z-index: 10;
         }
 
         .work-image:hover::after {
@@ -394,7 +417,7 @@
             min-height: auto;
             max-height: none; 
             background: var(--bg-dark-elevated);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 0;
         }
 
         .composite-image .work-image:first-child {
@@ -403,6 +426,11 @@
             width: 80%;
             height: 80%; 
             z-index: 1;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .composite-image .work-image img {
+            object-position: top left;
         }
 
         .composite-image .work-image:last-child {
@@ -644,8 +672,7 @@
 
         /* Footer */
         .footer {
-            /* SPACER FIX: Reduced bottom padding from 15rem to 11rem (~25% less) */
-            padding: 4rem 2rem 11rem; 
+            padding: 8rem 2rem 10rem; 
             background: var(--bg-light);
             display: flex;
             justify-content: center;
@@ -658,7 +685,7 @@
             border: 1px solid var(--border-light);
             border-radius: 12px;
             padding: 3rem 2.5rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
             text-align: center;
         }
 
@@ -812,12 +839,18 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
 
             .hero-right {
                 width: 100%;
                 flex: auto; 
                 max-width: 400px;
-                order: 1; 
+                order: 1;
+                /* Reset alignment for mobile if needed */
+                align-items: flex-end; 
             }
             
             .hero-person-img {
@@ -827,7 +860,7 @@
 
             .hero-image-wrapper {
                 justify-content: center; 
-                align-items: center;
+                align-items: flex-end; /* Keep mobile at bottom too */
                 background: none; 
             }
 
@@ -883,12 +916,22 @@
                     <h1>Arun Raj</h1>
                     <h2>Product & Growth Marketer | 0→1 Builder</h2>
                     <p class="hero-tagline">With a founder's mindset, I build marketing systems from scratch. Frugal with budgets, good on results. I have a strong business acumen.</p>
-                    <a href="resume.pdf" class="cta-button" download>Get my resume</a>
+                    
+                    <div class="hero-buttons">
+                        <!-- This looks for a file named "resume.pdf" in your main folder -->
+                        <a href="resume.pdf" class="cta-button" download>Get my resume</a>
+                        
+                        <!-- Updated LinkedIn URL -->
+                        <a href="https://www.linkedin.com/in/arun-raj-a08557254/" class="cta-button secondary" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            LinkedIn
+                        </a>
+                    </div>
                 </div>
                 <div class="hero-right">
                     <div class="hero-image-wrapper">
-                        <!-- Object Position: Center (Floating effect) -->
-                        <img src="images/arun_hero_image.png" alt="Arun Raj" class="hero-person-img">
+                        <!-- Object Position: Bottom Center (Grounded effect) -->
+                        <img src="https://iili.io/f84i65N.md.png" alt="Arun Raj" class="hero-person-img">
                     </div>
                 </div>
             </div>
@@ -963,13 +1006,7 @@
                     <p>Lifecycle management via HubSpot. I designed the actual creatives used.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Binance Labs -->
-    <section class="section">
-        <div class="container">
-            <div class="binance-layout">
+        <div class="binance-layout">
                 <div class="work-text">
                     <h3>Program Marketing</h3>
                     <p>Managed the Incubation Program for the Indian market. Handled all communications, copywriting, and social narratives to successfully onboard 20+ startups into the program.</p>
@@ -978,10 +1015,11 @@
                     <img src="images/binance.png" alt="Binance Landing Page">
                 </div>
             </div>
+
         </div>
     </section>
 
-    <div class="wave-transition">
+       <div class="wave-transition">
         <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
             <path class="fill-dark" d="M0,50 Q300,20 600,50 T1200,50 L1200,0 L0,0 Z" stroke="none"/>
             <path d="M0,50 Q300,20 600,50 T1200,50" fill="none" stroke="#F8F6F3" stroke-width="1" opacity="0.3"/>
@@ -1039,4 +1077,131 @@
             <div class="card-section">
                 <div class="card-section-header">
                     <h3>Product-Market Fit Tests</h3>
-                    <p>Ran A/B narrative tests on the same core product to validate PMF across
+                    <p>Ran A/B narrative tests on the same core product to validate PMF across different segments</p>
+                </div>
+                
+                <div class="pmf-container">
+                    <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aitwin.png" alt="AI Twin Deck">
+                        </div>
+                        <h4>AI Twin: Influencer Narrative</h4>
+                    </a>
+                    <div class="vs-divider">VS</div>
+                    <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aiconcierge.png" alt="AI Concierge Deck">
+                        </div>
+                        <h4>AI Concierge: Enterprise Narrative</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Investor Materials</h3>
+                    <p>Comprehensive company narrative for fundraising</p>
+                </div>
+                
+                <div class="card-grid single">
+                    <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/company_deck.png" alt="Company Deck">
+                        </div>
+                        <h4>Company Narrative Deck</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical SEO (Now a Link, Not Lightbox) -->
+    <section class="section light">
+        <div class="container">
+            <div class="work-item">
+                <a href="https://humanratedai.com" target="_blank" class="work-image">
+<img src="images/hrai_site.png" alt="HumanRatedAI Site" style="object-position:top center;transform:translateX(-3px)">
+                </a>
+                <div class="work-text">
+                    <h3>Technical SEO</h3>
+                    <p>Built humanratedai.com solo to master hosting and Core Web Vitals. Achieved 100% PageSpeed rating.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>I'm a 7+ year marketer who thrives in early-stage chaos.</p>
+            <p>If you need someone who understands messaging, growth, and GTM - I'm your guy.</p>
+            <div class="footer-links">
+                <!-- Updated LinkedIn URL -->
+                <a href="https://www.linkedin.com/in/arun-raj-a08557254/" class="footer-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:arunandfibo@gmail.com" class="footer-link email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    Email Me
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img id="lightbox-img" src="" alt="Zoomed image">
+        </div>
+    </div>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Add click handlers ONLY to divs (not links)
+        document.querySelectorAll('div.work-image').forEach(img => {
+            img.addEventListener('click', function() {
+                const imgElement = this.querySelector('img');
+                if (imgElement && !imgElement.classList.contains('hero-person-img')) {
+                    openLightbox(imgElement.src);
+                } 
+            });
+        });
+        
+        // Composite image handler
+        document.querySelectorAll('.composite-image .work-image').forEach(img => {
+            img.addEventListener('click', function(e) {
+                 e.stopPropagation(); 
+                 const imgElement = this.querySelector('img');
+                 if(imgElement) openLightbox(imgElement.src);
+            });
+        });
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
