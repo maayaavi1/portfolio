@@ -978,14 +978,12 @@
 
            /* Padded Frame Style for Programmatic SEO section */
         .work-image.padded-frame {
+    position: relative; /* This is the anchor for the content inside */
     background: var(--bg-light-elevated);
-    padding: 1.5rem;
     border: 1px solid var(--border-light);
-    display: flex;
-    flex-direction: column;
-    /* --- KEY FIX: Re-imposing the height constraint to match other sections --- */
-    height: 550px; /* A little extra height to accommodate padding + caption nicely */
-    max-height: 85vh; /* This keeps it consistent with other .work-image containers */
+    height: 550px; /* Locks the height to match other sections */
+    max-height: 85vh;
+    padding: 1.5rem; /* We keep the padding for the visual frame */
 }
         
         .work-image.padded-frame:hover {
@@ -994,24 +992,32 @@
 
         /* Overwrite the absolute positioning for the image inside this specific container */
         .work-image.padded-frame img {
-    position: static;
+    position: absolute;
+    top: 1.5rem;    /* Respects top padding */
+    left: 1.5rem;   /* Respects left padding */
+    right: 1.5rem;  /* Respects right padding */
+    bottom: 4rem;   /* Leaves space at the bottom for the caption */
+    width: auto;
+    height: auto;
+    max-width: calc(100% - 3rem);  /* Ensures it doesn't overflow padding */
+    max-height: calc(100% - 5.5rem);/* Ensures it doesn't overflow padding/caption area */
+    object-fit: contain; /* Scales the image perfectly without squishing */
     border: 1px solid var(--border-light);
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    /* --- KEY FIX: Use Flexbox to make the image shrink to fit --- */
-    flex: 1; /* This tells the image to take up all available vertical space */
-    min-height: 0; /* A necessary flexbox hack that allows the image to shrink */
-    object-fit: contain; /* This scales the image down while preserving its aspect ratio */
-    width: 100%;
 }
+        
         .image-caption {
-            font-family: 'Work Sans', sans-serif;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-light-secondary);
-            margin-top: 1.25rem;
-            font-weight: 500;
-        }
+    position: absolute;
+    bottom: 1.5rem; /* Sits cleanly in the bottom padding area */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-light-secondary);
+    font-weight: 500;
+}
         
             /* Responsive */
         @media (max-width: 968px) {
