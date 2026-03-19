@@ -847,16 +847,18 @@
         }
 
         .carousel-slide {
-            position: absolute;
-            height: 90%; 
-            width: auto; 
-            max-width: 70%;
-            object-fit: contain; 
-            border-radius: 8px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            cursor: pointer;
-        }
+    position: absolute;
+    height: auto; /* Let the image have its natural height */
+    width: auto; 
+    max-height: 90%; /* Stops portrait images from spilling out */
+    max-width: 80%;  /* Stops landscape images from being too wide */
+    object-fit: contain; 
+    border-radius: 8px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    /* THE MAGIC FIX: This shadow only applies to the visible image, not the container */
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    cursor: pointer;
+}
 
         .carousel-slide.active {
             left: 50%;
@@ -976,14 +978,17 @@
 
            /* Padded Frame Style for Programmatic SEO section */
         .work-image.padded-frame {
-            background: var(--bg-light-elevated);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border: 1px solid var(--border-light);
-            min-height: auto; /* Let the content define the height */
-        }
+    background: var(--bg-light-elevated);
+    padding: 1.5rem;
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns content to top */
+    /* --- KEY FIXES --- */
+    min-height: auto; /* Allows the box to shrink to fit content */
+    max-height: none; /* Removes the viewport height limit */
+    height: auto;     /* Ensures height is flexible */
+}
         
         .work-image.padded-frame:hover {
             transform: scale(1.02); /* A slightly more pronounced hover */
