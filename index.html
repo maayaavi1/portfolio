@@ -983,11 +983,9 @@
     border: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Aligns content to top */
-    /* --- KEY FIXES --- */
-    min-height: auto; /* Allows the box to shrink to fit content */
-    max-height: none; /* Removes the viewport height limit */
-    height: auto;     /* Ensures height is flexible */
+    /* --- KEY FIX: Re-imposing the height constraint to match other sections --- */
+    height: 550px; /* A little extra height to accommodate padding + caption nicely */
+    max-height: 85vh; /* This keeps it consistent with other .work-image containers */
 }
         
         .work-image.padded-frame:hover {
@@ -996,12 +994,16 @@
 
         /* Overwrite the absolute positioning for the image inside this specific container */
         .work-image.padded-frame img {
-            position: static;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
+    position: static;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    /* --- KEY FIX: Use Flexbox to make the image shrink to fit --- */
+    flex: 1; /* This tells the image to take up all available vertical space */
+    min-height: 0; /* A necessary flexbox hack that allows the image to shrink */
+    object-fit: contain; /* This scales the image down while preserving its aspect ratio */
+    width: 100%;
+}
         .image-caption {
             font-family: 'Work Sans', sans-serif;
             text-align: center;
