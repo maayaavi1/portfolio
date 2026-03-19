@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +8,9 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-3LJ2K87EXD');
 </script>
-    <meta charset="UTF-8">
+       <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arun Raj - Product & Growth Marketer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -826,8 +826,187 @@
                 transform: translateY(0);
             }
         }
+       /* Paid Ad Carousel Section */
+        .ad-showcase-layout {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr; /* 65-35 Split */
+            gap: 4rem;
+            align-items: center;
+            margin-top: 6rem;
+        }
 
-        /* Responsive */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Keeps edge buttons contained cleanly */
+            border-radius: 8px;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            height: 90%; 
+            width: auto; 
+            max-width: 70%;
+            object-fit: contain; 
+            border-radius: 8px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        .carousel-slide.active {
+            left: 50%;
+            transform: translateX(-50%) scale(1);
+            z-index: 10;
+            opacity: 1;
+        }
+
+        /* Tightened peek left and right */
+        .carousel-slide.prev {
+            left: 20%;
+            transform: translateX(-50%) scale(0.85);
+            z-index: 5;
+            opacity: 0.3;
+        }
+
+        .carousel-slide.next {
+            left: 80%;
+            transform: translateX(-50%) scale(0.85);
+            z-index: 5;
+            opacity: 0.3;
+        }
+
+        .carousel-slide.hidden-left {
+            left: -10%;
+            transform: translateX(-50%) scale(0.6);
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .carousel-slide.hidden-right {
+            left: 110%;
+            transform: translateX(-50%) scale(0.6);
+            z-index: 1;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Edge Swipe Buttons (Netflix Style) */
+        .carousel-edge {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15%;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .carousel-edge svg {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-edge.left {
+            left: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 100%);
+        }
+
+        .carousel-edge.right {
+            right: 0;
+            background: linear-gradient(to left, rgba(0,0,0,0.5) 0%, transparent 100%);
+        }
+
+        .carousel-edge:hover {
+            opacity: 1;
+        }
+
+        .carousel-edge:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Ad Text Styling */
+        .ad-text-container {
+            transition: opacity 0.3s ease;
+        }
+        
+        .ad-subheading {
+            color: var(--accent-warm);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .slide-indicator {
+            display: block;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-dark-secondary);
+            margin-top: 0.5rem; /* Space below the H3 */
+            margin-bottom: 1.5rem; /* Space above the dynamic text */
+            font-weight: 500;
+        }
+        /* --- THIS IS THE DEFINITIVE LAYOUT SHIFT FIX --- */
+/* Make the entire text block a flex column */
+.work-text.ad-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns content to the top */
+}
+
+/* Give the DYNAMIC part a minimum height to absorb changes */
+#dynamic-ad-text {
+    min-height: 150px; 
+}
+
+           /* Padded Frame Style for Programmatic SEO section */
+        .work-image.padded-frame {
+            background: var(--bg-light-elevated);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid var(--border-light);
+            min-height: auto; /* Let the content define the height */
+        }
+        
+        .work-image.padded-frame:hover {
+            transform: scale(1.02); /* A slightly more pronounced hover */
+        }
+
+        /* Overwrite the absolute positioning for the image inside this specific container */
+        .work-image.padded-frame img {
+            position: static;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .image-caption {
+            font-family: 'Work Sans', sans-serif;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light-secondary);
+            margin-top: 1.25rem;
+            font-weight: 500;
+        }
+        
+            /* Responsive */
         @media (max-width: 968px) {
             .hero-layout {
                 flex-direction: column;
@@ -909,6 +1088,17 @@
                 max-height: 60vh;
                 min-height: 300px;
             }
+        .ad-showcase-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .carousel-container {
+                height: 400px;
+            }
+            .carousel-slide.prev { left: 15%; }
+            .carousel-slide.next { left: 85%; }
+            /* Make edge buttons always slightly visible on mobile */
+            .carousel-edge { opacity: 0.8; }
         }
 
         html {
@@ -1024,7 +1214,42 @@
                     <img src="images/binance.png" alt="Binance Landing Page">
                 </div>
             </div>
+<!-- NEW AD CAROUSEL HTML -->
+            <!-- ========================================== -->
+            <div class="ad-showcase-layout">
+                <div class="carousel-container">
+                    
+                    <!-- Left edge swipe zone -->
+<div class="carousel-edge left" onclick="prevSlide()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </div>
 
+                    <!-- Images with the 'onclick' restored! -->
+                    <img src="images/earna_acq_tradfi_calc_v1.jpg" class="carousel-slide active" onclick="goToSlide(0)" alt="Ad Creative">
+                    <img src="images/earna_acq_split_bankbook_v2.png" class="carousel-slide next" onclick="goToSlide(1)" alt="Ad Creative">
+                    <img src="images/earna_retarget_app_ui_v1.jpg" class="carousel-slide hidden-right" onclick="goToSlide(2)" alt="Ad Creative">
+                    <img src="images/earna_retarget_atm_daily_v1.jpg" class="carousel-slide hidden-right" onclick="goToSlide(3)" alt="Ad Creative">
+                    <img src="images/binance_labs_inc_isometric_v1.png" class="carousel-slide hidden-right" onclick="goToSlide(4)" alt="Ad Creative">
+                    <img src="images/binance_labs_inc_founders_v2.png" class="carousel-slide prev" onclick="goToSlide(5)" alt="Ad Creative">
+                    
+                    <!-- Right edge swipe zone -->
+                    <div class="carousel-edge right" onclick="nextSlide()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </div>
+                
+                <!-- Updated hierarchy sharing the .work-text class -->
+                <div class="work-text ad-text-container" id="ad-text-container">
+                    <h3>Social Media Ads</h3>
+                    <span id="slide-indicator" class="slide-indicator">1/6</span>
+                    <div id="dynamic-ad-text">
+                    <h4 id="ad-heading" class="ad-subheading">Top-of-Funnel: Concrete Numbers</h4>
+                    <p id="ad-copy">Swapped percentage yields for actual rupee returns. Brought CPA down by 22%.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ========================================== -->
+            
         </div>
     </section>
 
@@ -1123,11 +1348,14 @@
     </section>
 
     <!-- Technical SEO (Now a Link, Not Lightbox) -->
+    <!-- Technical SEO (Now a Link, Not Lightbox) -->
     <section class="section light">
         <div class="container">
             <div class="work-item">
-                <a href="https://transistordatabase.com/transistors-equivalent-finder-tool" target="_blank" class="work-image">
-<img src="images/transistordatabase.png" alt="TransistorDatabase Site" style="object-position:top center;transform:translateX(-3px)">
+                <!-- We add the 'padded-frame' class to the link -->
+                <a href="https://transistordatabase.com/transistors-equivalent-finder-tool" target="_blank" class="work-image padded-frame">
+                    <img src="images/transistordatabase.png" alt="TransistorDatabase Site">
+                    <div class="image-caption">TransistorDatabase</div>
                 </a>
                 <div class="work-text">
                     <h3>Programmatic SEO</h3>
@@ -1141,7 +1369,6 @@
             </div>
         </div>
     </section>
-
     <footer class="footer">
         <div class="footer-container">
             <p>I'm a marketer with 7+ years building things from scratch at early-stage companies.</p>
@@ -1214,7 +1441,95 @@
                 closeLightbox();
             }
         });
+
+        // ==========================================
+        // Carousel Logic
+        // ==========================================
+       const adContent = [
+            {
+                heading: "Top-of-Funnel: Concrete Numbers",
+                copy: "Swapped percentage yields for actual rupee returns. Brought CPA down by 22%."
+            },
+            {
+                heading: "Top-of-Funnel: The Wake-Up Call",
+                copy: "Bankbook vs. app. Highest CTR in the campaign at 4.1%."
+            },
+            {
+                heading: "Mid-Funnel: UX Focus",
+                copy: 'Clean app UI for warm leads who were on the fence about crypto. "No trading required" did the heavy lifting.'
+            },
+            {
+                heading: "Bottom-Funnel: Retargeting",
+                copy: 'For signed-up users sitting at zero balance. Led with "withdraw anytime" to kill the lock-up fear.'
+            },
+            {
+                heading: "Binance Labs: Dev Targeting",
+                copy: "Ran on Twitter to reach Web3 developers and protocol builders for the Binance Labs Incubator."
+            },
+            {
+                heading: "Binance Labs: Founder Targeting",
+                copy: "A/B variant aimed at non-technical founders. Broader appeal, same program."
+            }
+        ];
+           
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const textContainer = document.getElementById('dynamic-ad-text');
+        const headingEl = document.getElementById('ad-heading');
+        const copyEl = document.getElementById('ad-copy');
+        const indicatorEl = document.getElementById('slide-indicator');
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.className = 'carousel-slide'; // reset
+                
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index === currentSlide - 1 || (currentSlide === 0 && index === slides.length - 1)) {
+                    slide.classList.add('prev');
+                } else if (index === currentSlide + 1 || (currentSlide === slides.length - 1 && index === 0)) {
+                    slide.classList.add('next');
+                } else {
+                    // Decide if it should hide left or right
+                    let diff = index - currentSlide;
+                    if (diff < 0) diff += slides.length;
+                    if (diff < slides.length / 2) {
+                        slide.classList.add('hidden-right');
+                    } else {
+                        slide.classList.add('hidden-left');
+                    }
+                }
+            });
+
+            // Fade out, swap text, fade in
+            textContainer.style.opacity = 0;
+            setTimeout(() => {
+            if(headingEl && copyEl) {
+            headingEl.textContent = adContent[currentSlide].heading;
+            copyEl.textContent = adContent[currentSlide].copy;
+            // The +1 is because array indexes start at 0
+            indicatorEl.textContent = `${currentSlide + 1} / ${slides.length}`; // <-- ADD THIS LINE
+            }
+            textContainer.style.opacity = 1;
+            }, 300);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            if (currentSlide !== index) {
+                currentSlide = index;
+                updateCarousel();
+            }
+        }
     </script>
 </body>
 </html>
-
