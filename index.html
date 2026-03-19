@@ -976,48 +976,70 @@
     min-height: 150px; 
 }
 
-           /* Padded Frame Style for Programmatic SEO section */
-        .work-image.padded-frame {
-    position: relative; /* This is the anchor for the content inside */
-    background: var(--bg-light-elevated);
-    border: 1px solid var(--border-light);
-    height: 550px; /* Locks the height to match other sections */
-    max-height: 85vh;
-    padding: 1.5rem; /* We keep the padding for the visual frame */
-}
-        
-        .work-image.padded-frame:hover {
-            transform: scale(1.02); /* A slightly more pronounced hover */
+/* --- FINAL, ISOLATED STYLES FOR PROGRAMMATIC SEO SECTION --- */
+        .showcase-frame-container {
+            background: var(--bg-light-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            height: 550px;
+            max-height: 85vh;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
         }
 
-        /* Overwrite the absolute positioning for the image inside this specific container */
-        .work-image.padded-frame img {
-    position: absolute;
-    top: 1.5rem;    /* Respects top padding */
-    left: 1.5rem;   /* Respects left padding */
-    right: 1.5rem;  /* Respects right padding */
-    bottom: 4rem;   /* Leaves space at the bottom for the caption */
-    width: auto;
-    height: auto;
-    max-width: calc(100% - 3rem);  /* Ensures it doesn't overflow padding */
-    max-height: calc(100% - 5.5rem);/* Ensures it doesn't overflow padding/caption area */
-    object-fit: contain; /* Scales the image perfectly without squishing */
-    border: 1px solid var(--border-light);
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-        
-        .image-caption {
-    position: absolute;
-    bottom: 1.5rem; /* Sits cleanly in the bottom padding area */
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Work Sans', sans-serif;
-    text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-light-secondary);
-    font-weight: 500;
-}
+        .showcase-frame-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .showcase-link {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .showcase-link img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+        }
+
+        .showcase-caption {
+            font-family: 'Work Sans', sans-serif;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light-secondary);
+            margin-top: 1.25rem;
+            font-weight: 500;
+        }
+
+        .showcase-link::after {
+            content: '↗ Visit Website';
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            color: white;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .showcase-link:hover::after {
+            opacity: 1;
+        }        
         
             /* Responsive */
         @media (max-width: 968px) {
@@ -1360,16 +1382,18 @@
         </div>
     </section>
 
-    <!-- Technical SEO (Now a Link, Not Lightbox) -->
-    <!-- Technical SEO (Now a Link, Not Lightbox) -->
+    <!-- FINAL PROGRAMMATIC SEO SECTION (REPLACE OLD ONE) -->
+    <!-- ========================================== -->
     <section class="section light">
         <div class="container">
             <div class="work-item">
-                <!-- We add the 'padded-frame' class to the link -->
-                <a href="https://transistordatabase.com/transistors-equivalent-finder-tool" target="_blank" class="work-image padded-frame">
-                    <img src="images/transistordatabase.png" alt="TransistorDatabase Site">
-                    <div class="image-caption">TransistorDatabase</div>
-                </a>
+                <!-- This new container uses a unique class to avoid all conflicts -->
+                <div class="showcase-frame-container">
+                    <a href="https://transistordatabase.com/transistors-equivalent-finder-tool" target="_blank" class="showcase-link">
+                        <img src="images/transistordatabase.png" alt="TransistorDatabase Site">
+                    </a>
+                    <div class="showcase-caption">TransistorDatabase</div>
+                </div>
                 <div class="work-text">
                     <h3>Programmatic SEO</h3>
                     <p>Built <a href="https://transistordatabase.com" target="_blank" style="color: inherit; text-decoration: underline;">transistordatabase.com</a> - a programmatic SEO project with 3,500 pages, expanding to 10,000+. Total cost: $12/year.</p>
@@ -1382,6 +1406,7 @@
             </div>
         </div>
     </section>
+    <!-- ========================================== -->
     <footer class="footer">
         <div class="footer-container">
             <p>I'm a marketer with 7+ years building things from scratch at early-stage companies.</p>
