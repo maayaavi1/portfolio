@@ -467,19 +467,25 @@
             height: 100px;
             overflow: hidden;
             background-color: var(--bg-light); 
+            margin-top: -1px; /* FIX: Prevents the 1px sub-pixel rendering tear */
+            transform: translateZ(0); /* FIX: Forces GPU hardware acceleration */
+            -webkit-transform: translateZ(0);
         }
 
         .wave-transition svg {
+            display: block; /* FIX: Removes weird inline text spacing */
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            transform: translateZ(0); /* FIX: Forces GPU hardware acceleration */
+            -webkit-transform: translateZ(0);
         }
         
         .wave-transition path.fill-dark {
             fill: var(--bg-dark);
-        }
+        }        
 
         /* Callout Box */
         .callout {
@@ -1171,7 +1177,7 @@
                 <div class="hero-right">
                     <div class="hero-image-wrapper">
                         <!-- Object Position: Bottom Center (Grounded effect) -->
-                        <img src="https://iili.io/f84i65N.md.png" alt="Arun Raj" class="hero-person-img">
+                        <img src="images/arun_hero_image.webp" alt="Arun Raj" class="hero-person-img">
                     </div>
                 </div>
             </div>
@@ -1211,7 +1217,7 @@
             <div class="work-item">
                 <div class="work-image" data-position="top">
                     <!-- USE STYLE HERE TO ADJUST POSITIONING IF NEEDED -->
-                    <img src="images/GA4_attribution.png" alt="GA4 Attribution Table">
+                    <img src="images/GA4_attribution.webp" alt="GA4 Attribution Table">
                 </div>
                 <div class="work-text">
                     <h3>Attribution Tracking</h3>
@@ -1227,7 +1233,7 @@
                 </div>
                 <!-- ADDED IMG-FILL CLASS HERE -->
                 <div class="work-image" data-position="top">
-                    <img src="images/GA4_product_funnel.PNG" alt="GA4 Product Funnel" class="img-fill">
+                    <img src="images/GA4_product_funnel.webp" alt="GA4 Product Funnel" class="img-fill">
                 </div>
             </div>
 
@@ -1235,10 +1241,10 @@
             <div class="work-item">
                 <div class="composite-image">
                     <div class="work-image" data-position="center">
-                        <img src="images/hubspot_dashboard.PNG" alt="HubSpot Dashboard">
+                        <img src="images/hubspot_dashboard.webp" alt="HubSpot Dashboard">
                     </div>
                     <div class="work-image" data-position="center">
-                        <img src="images/hubspot_email.png" alt="HubSpot Email Preview">
+                        <img src="images/hubspot_email.webp" alt="HubSpot Email Preview">
                     </div>
                 </div>
                 <div class="work-text">
@@ -1252,7 +1258,7 @@
                     <p>Managed the Incubation Program for the Indian market. Handled all communications, copywriting, and social narratives to successfully onboard 20+ startups into the program.</p>
                 </div>
                 <div class="work-image" data-position="top">
-                    <img src="images/binance.png" alt="Binance Landing Page">
+                    <img src="images/binance.webp" alt="Binance Landing Page">
                 </div>
             </div>
 <!-- NEW AD CAROUSEL HTML -->
@@ -1356,14 +1362,14 @@
                 <div class="pmf-container">
                     <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
                         <div class="card-thumbnail">
-                            <img src="images/aitwin.png" alt="AI Twin Deck">
+                            <img src="images/aitwin.webp" alt="AI Twin Deck">
                         </div>
                         <h4>AI Twin: Influencer Narrative</h4>
                     </a>
                     <div class="vs-divider">VS</div>
                     <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
                         <div class="card-thumbnail">
-                            <img src="images/aiconcierge.png" alt="AI Concierge Deck">
+                            <img src="images/aiconcierge.webp" alt="AI Concierge Deck">
                         </div>
                         <h4>AI Concierge: Enterprise Narrative</h4>
                     </a>
@@ -1379,7 +1385,7 @@
                 <div class="card-grid single">
                     <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
                         <div class="card-thumbnail">
-                            <img src="images/company_deck.png" alt="Company Deck">
+                            <img src="images/company_deck.webp" alt="Company Deck">
                         </div>
                         <h4>Company Narrative Deck</h4>
                     </a>
@@ -1396,7 +1402,7 @@
                 <!-- This new container uses a unique class to avoid all conflicts -->
                 <div class="showcase-frame-container">
                     <a href="https://transistordatabase.com/transistors-equivalent-finder-tool" target="_blank" class="showcase-link">
-                        <img src="images/transistordatabase.png" alt="TransistorDatabase Site">
+                        <img src="images/transistordatabase.webp" alt="TransistorDatabase Site">
                     </a>
                     <div class="showcase-caption">TransistorDatabase</div>
                 </div>
