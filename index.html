@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -467,26 +466,27 @@
             height: 100px;
             overflow: hidden;
             background-color: var(--bg-light); 
-            margin-top: -1px; /* FIX: Prevents the 1px sub-pixel rendering tear */
-            transform: translateZ(0); /* FIX: Forces GPU hardware acceleration */
+            margin-top: -1px; 
+            margin-bottom: -2px; /* FIX: Pulls the next section up to seal the Firefox gap */
+            z-index: 2; /* FIX: Ensures it sits perfectly on top of the seam */
+            transform: translateZ(0); 
             -webkit-transform: translateZ(0);
         }
 
         .wave-transition svg {
-            display: block; /* FIX: Removes weird inline text spacing */
+            display: block; 
             position: absolute;
-            bottom: 0;
+            bottom: -1px; /* FIX: Pulls the SVG slightly below the edge */
             left: 0;
             width: 100%;
-            height: 100%;
-            transform: translateZ(0); /* FIX: Forces GPU hardware acceleration */
+            height: calc(100% + 2px); /* FIX: Oversizes the SVG to prevent internal gaps */
+            transform: translateZ(0); 
             -webkit-transform: translateZ(0);
         }
         
         .wave-transition path.fill-dark {
             fill: var(--bg-dark);
-        }        
-
+        }
         /* Callout Box */
         .callout {
             background: var(--bg-light-elevated);
