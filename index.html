@@ -982,44 +982,58 @@
             background: var(--bg-light-elevated);
             border: 1px solid var(--border-light);
             border-radius: 8px;
-            height: 500px; /* Reduced height */
-            padding: 0.75rem; /* THE KEY FIX: Reduced padding */
+            /* FIX 1: Changed to 2rem to exactly match the padding/gap used in the Decks (.card) */
+            padding: 2rem; 
             display: flex;
             flex-direction: column;
             transition: var(--transition);
+            /* FIX 3: Ensures it never gets taller than the screen, preventing awkward scrolling */
+            max-height: 85vh; 
         }
 
         .showcase-frame-container:hover {
-            transform: scale(1.02);
+            /* Matches the hover style of your PMF decks for uniformity */
+            transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-cool);
         }
 
         .showcase-link {
-            flex: 1;
-            min-height: 0;
-            display: flex;
+            position: relative;
+            width: 100%;
+            /* FIX 2 & 3: This aspect ratio naturally makes it the exact same visual size as the Attribution container (~500px tall on desktop) without using fixed px sizes. */
+            aspect-ratio: 16 / 10;
+            display: block;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            background: var(--bg-light);
         }
 
         .showcase-link img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 4px; /* Slightly smaller radius for inner image */
+            /* Fills the box edge-to-edge seamlessly without stretching, anchoring to the top of the webpage */
+            object-fit: cover;
+            object-position: top center;
         }
 
         .showcase-caption {
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-light-secondary);
-            margin-top: 0.75rem; /* Reduced margin */
+            margin-top: 1.25rem;
             font-weight: 500;
         }
 
         .showcase-link::after {
             content: '↗ Visit Website';
             position: absolute;
-            bottom: 0.5rem;
-            right: 0.5rem;
+            bottom: 1rem;
+            right: 1rem;
             font-size: 0.75rem;
             opacity: 0;
             transition: var(--transition);
@@ -1032,8 +1046,7 @@
 
         .showcase-link:hover::after {
             opacity: 1;
-        }
-        
+        }        
             /* Responsive */
         @media (max-width: 968px) {
             .hero-layout {
