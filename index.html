@@ -525,7 +525,7 @@
 
         .comparison-column h4 {
             font-size: 0.875rem;
-            text-transform: uppercase;
+            text-transform: none;
             letter-spacing: 0.05em;
             margin-bottom: 1.5rem;
             font-family: 'Work Sans', sans-serif;
@@ -930,12 +930,20 @@
 
         .carousel-edge.left {
             left: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 100%);
+            background: transparent;
         }
 
         .carousel-edge.right {
             right: 0;
-            background: linear-gradient(to left, rgba(0,0,0,0.5) 0%, transparent 100%);
+            background: transparent;
+        }
+
+        .section.light .carousel-edge {
+            color: var(--text-light-primary);
+        }
+
+        .section.light .carousel-edge svg {
+            filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));
         }
 
         .carousel-edge:hover {
@@ -1151,6 +1159,126 @@
         html {
             scroll-behavior: smooth;
         }
+    
+        /* Dark Theme Support for B2B Callout & Comparison in Section 1 */
+        .section:not(.light) .callout {
+            background: var(--bg-dark-elevated);
+            border: 1px solid var(--border-dark);
+        }
+        .section:not(.light) .callout h3 {
+            color: var(--text-dark-primary);
+        }
+        .section:not(.light) .callout p {
+            color: var(--text-dark-secondary);
+        }
+        .section:not(.light) .comparison-column {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-dark);
+        }
+        .section:not(.light) .comparison-column.new {
+            background: linear-gradient(135deg, rgba(217, 169, 107, 0.08) 0%, var(--bg-dark-elevated) 100%);
+            border: 1.5px solid var(--accent-warm);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        .section:not(.light) .comparison-column.new::before {
+            background: var(--accent-warm);
+            color: var(--bg-dark);
+        }
+        .section:not(.light) .comparison-item {
+            border-bottom: 1px solid var(--border-dark);
+        }
+        .section:not(.light) .comparison-label {
+            color: var(--accent-warm);
+        }
+        .section:not(.light) .comparison-text {
+            color: var(--text-dark-secondary);
+        }
+        .section:not(.light) .card-section-header h3 {
+            color: var(--text-dark-primary);
+        }
+        .section:not(.light) .card-section-header p {
+            color: var(--text-dark-secondary);
+        }
+        .section:not(.light) a.card {
+            background: var(--bg-dark-elevated);
+            border: 1px solid var(--border-dark);
+        }
+        .section:not(.light) a.card:hover {
+            border-color: var(--accent-warm);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+        .section:not(.light) a.card.featured {
+            background: linear-gradient(135deg, rgba(217, 169, 107, 0.08) 0%, var(--bg-dark-elevated) 100%);
+            border: 1px solid var(--border-dark);
+        }
+        .section:not(.light) .card h4 {
+            color: var(--text-dark-primary);
+        }
+        .section:not(.light) .card-thumbnail {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-dark-elevated) 100%);
+        }
+        .section:not(.light) .vs-divider {
+            color: var(--accent-warm);
+        }
+
+        
+
+    
+        /* Chip Badge for Strategic GTM Decision */
+        .strategic-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-warm);
+            background: rgba(217, 169, 107, 0.12);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(217, 169, 107, 0.25);
+        }
+
+        /* Vertical bullets inside callout */
+        .vertical-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .vertical-bullets li {
+            position: relative;
+            padding-left: 1.25rem;
+            color: var(--text-dark-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .vertical-bullets li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-warm);
+            font-size: 1.2rem;
+            line-height: 1;
+            top: -1px;
+        }
+        .vertical-bullets li strong {
+            color: var(--text-dark-primary);
+            font-weight: 600;
+        }
+
+        /* High-contrast table column titles using theme white (var(--text-dark-primary)) and normal case */
+        .section:not(.light) .comparison-column h4 {
+            color: var(--text-dark-primary) !important;
+            font-size: 1.05rem;
+            letter-spacing: normal;
+            text-transform: none !important;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -1161,7 +1289,7 @@
                 <div class="hero-left">
                     <h1>Arun Raj</h1>
                     <h2>Product & Growth Marketer | 0→1 Builder</h2>
-                    <p class="hero-tagline">With a founder's mindset, I build marketing systems from scratch. Frugal with budgets, good on results. I have a strong business acumen.</p>
+                    <p class="hero-tagline">With a founder's mindset, I build marketing systems from scratch. Obsessed with customer empathy, sharp on positioning. I have a strong business acumen.</p>
                     
                     <div class="hero-buttons">
                         <!-- This looks for a file named "arun_pmm_resume.pdf" in your main folder -->
@@ -1205,8 +1333,117 @@
         </div>
     </section>
 
-    <!-- B2C Growth Marketing -->
+    <!-- B2B Product Marketing -->
     <section class="section">
+        <div class="container">
+            <div class="section-intro">
+                <h2>B2B Product Marketing</h2>
+                <p>Marketing & Research Manager at GENIE AI. I lead a team of six bridging product, positioning, and enterprise GTM.</p>
+            </div>
+
+            <!-- Strategic GTM Decision: Unbundling ALBIS -->
+            <div class="callout">
+                <span class="strategic-badge">Strategic GTM Decision</span>
+                <h3>From Horizontal AI Platform to Vertical Solutions</h3>
+                <p>Early enterprise sales conversations showed that buyers didn't want a generic AI platform; they wanted vertical solutions. We unbundled the core engine (ALBIS) into dedicated products:</p>
+                <ul class="vertical-bullets">
+                    <li><strong>CommunityOS:</strong> Property operations and resident engagement</li>
+                    <li><strong>HospitalOS:</strong> Healthcare facility operations and clinical workflows</li>
+                    <li><strong>RetailOS:</strong> Computer vision for warehouse and retail logistics</li>
+                    <li><strong>AvatarOS:</strong> Customer storefronts and digital accessibility</li>
+                    <li><strong>BOS:</strong> Autonomous operations layer for enterprise IT</li>
+                </ul>
+            </div>
+
+            <!-- Product Repositioning: Property+ to CommunityOS -->
+            <div class="callout">
+                <h3>Product Repositioning: Property+ &rarr; CommunityOS</h3>
+                <p>Led strategic repositioning from 'PropertyPlus' to 'CommunityOS' - moving the product out of commoditized PropTech into a new category to unlock enterprise + government buyers.</p>
+                
+                <div class="comparison-table">
+                    <div class="comparison-column">
+                        <h4>Property+ (Original)</h4>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Narrative</div>
+                            <div class="comparison-text">Feature-led narrative: Proptech platform with AI, digital twins, IoT, and voice capabilities</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Target Audience</div>
+                            <div class="comparison-text">Property managers and facility operators focused on operational efficiency</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Market Category</div>
+                            <div class="comparison-text">Proptech/facility management tool (commoditized, feature-comparison driven)</div>
+                        </div>
+                    </div>
+                    <div class="comparison-column new">
+                        <h4>CommunityOS (New)</h4>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Narrative</div>
+                            <div class="comparison-text">A platform where residents connect with each other, their building, and everything around them.</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Target Audience</div>
+                            <div class="comparison-text">Governments, developers, and community leaders seeking engagement and belonging, not just operations</div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">Market Category</div>
+                            <div class="comparison-text">A new category combining community engagement + space management - where PropTech tools don't compete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Product-Market Fit Tests</h3>
+                    <p>Ran A/B narrative tests on the same core product to validate PMF across different segments</p>
+                </div>
+                
+                <div class="pmf-container">
+                    <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aitwin.webp" alt="AI Twin Deck">
+                        </div>
+                        <h4>AI Twin: Influencer Narrative</h4>
+                    </a>
+                    <div class="vs-divider">VS</div>
+                    <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/aiconcierge.webp" alt="AI Concierge Deck">
+                        </div>
+                        <h4>AI Concierge: Enterprise Narrative</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="card-section-header">
+                    <h3>Investor Materials</h3>
+                    <p>Comprehensive company narrative for fundraising</p>
+                </div>
+                
+                <div class="card-grid single">
+                    <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
+                        <div class="card-thumbnail">
+                            <img src="images/company_deck.webp" alt="Company Deck">
+                        </div>
+                        <h4>Company Narrative Deck</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wave-transition">
+        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+            <path class="fill-dark" d="M0,50 Q300,20 600,50 T1200,50 L1200,0 L0,0 Z" stroke="none"/>
+            <path d="M0,50 Q300,20 600,50 T1200,50" fill="none" stroke="#F8F6F3" stroke-width="1" opacity="0.3"/>
+        </svg>
+    </div>
+
+<!-- B2C Growth Marketing -->
+    <section class="section light">
         <div class="container">
             <div class="section-intro">
                 <h2>B2C Growth Marketing</h2>
@@ -1297,100 +1534,6 @@
             </div>
             <!-- ========================================== -->
             
-        </div>
-    </section>
-
-       <div class="wave-transition">
-        <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
-            <path class="fill-dark" d="M0,50 Q300,20 600,50 T1200,50 L1200,0 L0,0 Z" stroke="none"/>
-            <path d="M0,50 Q300,20 600,50 T1200,50" fill="none" stroke="#F8F6F3" stroke-width="1" opacity="0.3"/>
-        </svg>
-    </div>
-
-    <!-- B2B Product Marketing -->
-    <section class="section light">
-        <div class="container">
-            <div class="section-intro">
-                <h2>B2B Product Marketing</h2>
-                <p>Marketing Manager at GENIE AI. I lead a team of six. I own the product narratives and personally execute targeted cold outreach campaigns, maintaining a 50% open rate.</p>
-            </div>
-
-            <div class="callout">
-                <h3>Product Repositioning: Property+ &rarr; CommunityOS&trade;</h3>
-                <p>Led strategic repositioning from 'PropertyPlus' to 'CommunityOS' - moving the product out of commoditized PropTech into a new category to unlock enterprise + government buyers.</p>
-                
-                <div class="comparison-table">
-                    <div class="comparison-column">
-                        <h4>Property+ (Original)</h4>
-                        <div class="comparison-item">
-                            <div class="comparison-label">Narrative</div>
-                            <div class="comparison-text">Feature-led narrative: Proptech platform with AI, digital twins, IoT, and voice capabilities</div>
-                        </div>
-                        <div class="comparison-item">
-                            <div class="comparison-label">Target Audience</div>
-                            <div class="comparison-text">Property managers and facility operators focused on operational efficiency</div>
-                        </div>
-                        <div class="comparison-item">
-                            <div class="comparison-label">Market Category</div>
-                            <div class="comparison-text">Proptech/facility management tool (commoditized, feature-comparison driven)</div>
-                        </div>
-                    </div>
-                    <div class="comparison-column new">
-                        <h4>CommunityOS™ (New)</h4>
-                        <div class="comparison-item">
-                            <div class="comparison-label">Narrative</div>
-                            <div class="comparison-text">A platform where residents connect with each other, their building, and everything around them.</div>
-                        </div>
-                        <div class="comparison-item">
-                            <div class="comparison-label">Target Audience</div>
-                            <div class="comparison-text">Governments, developers, and community leaders seeking engagement and belonging, not just operations</div>
-                        </div>
-                        <div class="comparison-item">
-                            <div class="comparison-label">Market Category</div>
-                            <div class="comparison-text">A new category combining community engagement + space management - where PropTech tools don't compete</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-section">
-                <div class="card-section-header">
-                    <h3>Product-Market Fit Tests</h3>
-                    <p>Ran A/B narrative tests on the same core product to validate PMF across different segments</p>
-                </div>
-                
-                <div class="pmf-container">
-                    <a href="https://albisai.my.canva.site/ai-twin-by-genie-ai" class="card" target="_blank">
-                        <div class="card-thumbnail">
-                            <img src="images/aitwin.webp" alt="AI Twin Deck">
-                        </div>
-                        <h4>AI Twin: Influencer Narrative</h4>
-                    </a>
-                    <div class="vs-divider">VS</div>
-                    <a href="https://albisai.my.canva.site/aiconcierge" class="card" target="_blank">
-                        <div class="card-thumbnail">
-                            <img src="images/aiconcierge.webp" alt="AI Concierge Deck">
-                        </div>
-                        <h4>AI Concierge: Enterprise Narrative</h4>
-                    </a>
-                </div>
-            </div>
-
-            <div class="card-section">
-                <div class="card-section-header">
-                    <h3>Investor Materials</h3>
-                    <p>Comprehensive company narrative for fundraising</p>
-                </div>
-                
-                <div class="card-grid single">
-                    <a href="https://albisai.my.canva.site/external-genie-ai-company-presentation-06-2025-v5" class="card featured" target="_blank">
-                        <div class="card-thumbnail">
-                            <img src="images/company_deck.webp" alt="Company Deck">
-                        </div>
-                        <h4>Company Narrative Deck</h4>
-                    </a>
-                </div>
-            </div>
         </div>
     </section>
 
